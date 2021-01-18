@@ -58,10 +58,10 @@ public class MainActivity extends Activity {
 	private final int SAMPLE_RATE_DEF = 22050;
 	private final int CHANNEL_NUMBER_DEF = 2;
 
-	private final String LOG_TAG = "MainActivity";
+	private final String LOG_TAG = "RTMP_PUSH";
 	private final boolean DEBUG_ENABLE = false;
 
-	private String _rtmpUrl = "rtmp://192.168.1.106/live/12345678";
+	private String _rtmpUrl = "rtmp://47.98.50.229/live/70003";
 
 	PowerManager.WakeLock _wakeLock;
 	private DataOutputStream _outputStream = null;
@@ -123,7 +123,7 @@ public class MainActivity extends Activity {
 							try {
 								_outputStream.write(h264Data);
 								int iH264Len = h264Data.length;
-								//Log.i(LOG_TAG, "Encode H264 len="+iH264Len);
+								Log.i(LOG_TAG, "Encode H264 len="+iH264Len);
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}
@@ -180,7 +180,7 @@ public class MainActivity extends Activity {
 						}
 					}
 				} else {
-					Log.i(LOG_TAG, "######fail to get PCM data");
+//					Log.i(LOG_TAG, "######fail to get PCM data");
 				}
 				try {
 					Thread.sleep(lSleepTime / 10);
@@ -345,7 +345,7 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 		}
-//_rtmpSessionMgr.Start("rtmp://175.25.23.34/live/12345678");
+		//_rtmpSessionMgr.Start("rtmp://175.25.23.34/live/12345678");
 		//_rtmpSessionMgr.Start("rtmp://192.168.0.110/live/12345678");
 		_rtmpSessionMgr = new RtmpSessionManager();
 		_rtmpSessionMgr.Start(_rtmpUrl);
